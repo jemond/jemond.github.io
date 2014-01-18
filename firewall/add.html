@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Router Firewall Configuration</title>
+	<link href="web.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+	<div id="Wrapper">
+	
+		<h1>Edit "Justin Remote Desktop" rule:</h1>
+	
+		<br />
+    
+		<form name="Edit Firewall" action="index.html" method="post">
+		
+			<div id="FormRowWrapper">
+			
+				<label for="usRuleName">Rule Name</label>
+				<div class="field">
+					<input type="text" name="usRuleName" id="usRuleName" /><br />
+					<span class="subnote">Displayed in firewall listing screen.</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper">
+			
+				<label for="usType">Type</label>
+				<div class="field">
+					<select id="usType" name="usType">
+						<option selected="selected">Allow</option>
+						<option>Deny</option>
+					</select>
+					<br />
+					<span class="subnote">Displayed in firewall listing screen.</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper">
+			
+				<label for="usSourceIp1">Source IPs</label>
+				<div class="field">
+					<input type="text" name="usSourceIp1" id="usSourceIp1"/><br />
+					<input type="text" name="usSourceIp2" id="usSourceIp2" /><br />
+					<input type="text" name="usSourceIp3" id="usSourceIp3" /><br />
+					<span class="subnote">
+						You can use any combination of single IPs, ranges and netmasks.<br />
+						You can preceed any rule with a label for disaply on the listing.<br />
+						Examples:<br />
+							34.2.4.1-34.2.4.123<br />
+							Offsite host: 43.123.56.23<br />
+							USCnet: 128.125.0.1/255.255.0.0, 43.1.2.3, 89.31.6.1/9<br />
+							Deny All: *
+					</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper">
+			
+				<label for="usOpenPort">Open Port</label>
+				<div class="field">
+					<input type="text" name="usOpenPort" id="usOpenPort" /><br />
+					<span class="subnote">The port open to the world on the router. The TCP, UDP or IP port. Label it, or it defaults to TCP.</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper">
+			
+				<label for="usDestinationPort">Destination Port</label>
+				<div class="field">
+					<input type="text" name="usDestinationPort" id="usDestinationPort" /><br />
+					<span class="subnote">The port to deliver traffic to on the Destination IP. The TCP, UDP or IP port. Label it, or it defaults to TCP.</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper">
+			
+				<label for="usDesitnationIp">Destination IP</label>
+				<div class="field">
+					<input type="text" name="usDesitnationIp" id="usDesitnationIp" /><br />
+					<span class="subnote">You can preceed any rule with a label for disaply on the listing.</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper">
+			
+				<label for="usLog">Log</label>
+				<div class="field">
+					<input class="checkbox" type="checkbox" name="usLog" id="usLog" checked="checked" /><br />
+					<span class="subnote">Log success and failures of this rule to the main firewall log.</span>
+				</div>
+			
+			</div>
+			
+			<div id="FormRowWrapper" class="buttonrow">
+		
+				<input class="button" type="button" onclick="location.href='index.html';" value="Save" />
+				<input class="button" type="button" onclick="location.href='index.html';" value="Cancel" />
+					
+			</div>
+		</form>
+    
+    </div>
+
+</body>
+</html>
