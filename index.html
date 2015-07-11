@@ -7,13 +7,10 @@
   <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <style media="screen">
 
-    body {
-      background-color: #E0E4CC;
-    }
-
     main {
       margin: auto;
       text-align: center;
+      max-width: 600px;
     }
 
     h1 {
@@ -23,16 +20,25 @@
     }
 
     p {
+      font-size: 35px;
       font-family: 'Lato', sans-serif;
     }
 
-    a {
-      color: #FA6900;
+    img {
+      display: block;
+      margin: 20px auto;
+      vertical-align: middle;
     }
 
     .name {
-      color: #69D2E7;
       font-weight: bold;
+    }
+
+    @media (min-width: 480px) {
+      img {
+        display: inline-block;
+        margin-right: 20px;
+      }
     }
 
   </style>
@@ -61,10 +67,18 @@
     <p>
       I run <a href="http://www.thirdandgrove.com/" title="Innovation made simple">Third and Grove</a>,
       <a href="http://goo.gl/zT8HH" title="Pro Web Project Management">wrote a book</a>,
-      drink tasty beers,
+      drink tasty &#127867;,
       and very occasionally
       <a href="http://twitter.com/justinpemond">express silly opinions in public</a>.
     </p>
+
+    <a href="http://www.thirdandgrove.com"><img src="third-and-grove-tree.png" title="Third and Grove Tree" alt="Third and Grove Tree" /></a>
+
+    <a href="http://goo.gl/zT8HH" title="Pro Web Project Management"><img src="pro-web-project-management.jpg" title="Pro Web Project Management, by Justin Emond" alt="Pro Web Project Management, by Justin Emond" /></a>
+
+    <a href="http://twitter.com/justinpemond"><img src="twitter-logo.png" title="Twitter logo" alt="Twitter logo" /></a>
+
+
 
   </main>
 
