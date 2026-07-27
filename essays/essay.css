@@ -199,6 +199,19 @@ a:hover, a:focus-visible { color: var(--accent); }
   color: color-mix(in oklab, var(--ink) 78%, var(--paper));
 }
 
+/* Source line — where the piece was originally posted (e.g. LinkedIn) */
+.essay__source {
+  margin-top: 2.4em;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.essay__source a { color: var(--accent); }
+
 /* --- Essay footer --------------------------------------------------------- */
 
 .essay__foot {
