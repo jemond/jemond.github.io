@@ -6,9 +6,11 @@ An annotated reading list — everything read since 2017 — plus a current read
 
 ## Stack
 
-Single `index.html`. No build step, no dependencies, no frameworks. Deployed via GitHub Pages on push to `master`.
+Static HTML styled by one shared stylesheet, `site.css`. No build step, no dependencies, no frameworks. Deployed via GitHub Pages on push to `master`.
 
-`robots.txt` and `sitemap.xml` sit at the repo root alongside it. `CNAME` points GitHub Pages at the custom domain.
+- `index.html` — homepage
+- `essays/<slug>/index.html` — long-form pieces, same design system as the homepage (see `essays/_template.html` to publish a new one)
+- `robots.txt` and `sitemap.xml` sit at the repo root. `CNAME` points GitHub Pages at the custom domain.
 
 ## Deploy
 

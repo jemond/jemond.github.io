@@ -1,5 +1,5 @@
 /* ==========================================================================
-   justinemond.com — essay page
+   justinemond.com — site styles (homepage + essays)
    Direction: "Editorial" (1b). Static CSS, no build step, no JS.
    Everything is driven by the custom properties in :root.
    ========================================================================== */
@@ -73,6 +73,7 @@ a:hover, a:focus-visible { color: var(--accent); }
 
 /* --- Essay layout --------------------------------------------------------- */
 
+.layout,
 .essay {
   display: grid;
   grid-template-columns: minmax(0, var(--margin-col)) minmax(0, var(--measure));
@@ -82,6 +83,7 @@ a:hover, a:focus-visible { color: var(--accent); }
 }
 
 /* Everything sits in the reading column; only pull quotes use column 1. */
+.layout > *,
 .essay > * { grid-column: 2; }
 
 .essay__title {
@@ -199,19 +201,6 @@ a:hover, a:focus-visible { color: var(--accent); }
   color: color-mix(in oklab, var(--ink) 78%, var(--paper));
 }
 
-/* Source line — where the piece was originally posted (e.g. LinkedIn) */
-.essay__source {
-  margin-top: 2.4em;
-  padding-top: 16px;
-  border-top: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-.essay__source a { color: var(--accent); }
-
 /* --- Essay footer --------------------------------------------------------- */
 
 .essay__foot {
@@ -228,7 +217,9 @@ a:hover, a:focus-visible { color: var(--accent); }
 /* Below the point where a 190px margin column + 640px measure fit, collapse
    to one column and let pull quotes span the measure. */
 @media (max-width: 960px) {
+  .layout,
   .essay { grid-template-columns: minmax(0, var(--measure)); }
+  .layout > *,
   .essay > * { grid-column: 1; }
 
   .pullquote {
@@ -253,8 +244,179 @@ a:hover, a:focus-visible { color: var(--accent); }
   :root { --paper: #fff; --accent: #000; }
   body { font-size: 11pt; }
   .page { padding: 0; max-width: none; }
+  .layout,
   .essay { display: block; }
   .pullquote { float: none; width: auto; margin: 1.4em 0; text-align: left; }
   .essay__foot, .masthead__kicker { display: none; }
   a { text-decoration: none; }
+}
+
+/* ==========================================================================
+   HOMEPAGE
+   Same grid, same type, same rules as an essay. The left margin column, which
+   holds pull quotes on an essay, holds section labels here.
+   ========================================================================== */
+
+/* Opening statement — set in the display face, one step below an essay title */
+.lede { margin-top: clamp(40px, 6vw, 72px); }
+
+.lede__statement {
+  margin: 0 0 1.05em;
+  font-weight: 400;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.4vw, 2.35rem);
+  line-height: 1.2;
+  letter-spacing: -0.016em;
+  text-wrap: pretty;
+}
+
+.lede p { margin: 0; text-wrap: pretty; }
+
+/* Jump links */
+.jump {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid color-mix(in oklab, var(--ink) 18%, transparent);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.jump a { text-decoration: none; }
+
+/* A section is two siblings: the label (margin column) and the body (measure).
+   Both carry .section-top so their rules line up across the gutter. */
+.section-top { margin-top: clamp(56px, 7vw, 88px); padding-top: 18px; }
+
+.section__label {
+  grid-column: 1;
+  border-top: 2px solid var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-align: right;
+  scroll-margin-top: 24px;
+}
+
+.section__body { border-top: 2px solid var(--rule); }
+.section__body > *:first-child { margin-top: 0; }
+
+.section__note {
+  margin: 0 0 1.4em;
+  text-wrap: pretty;
+}
+
+.section__meta {
+  margin: 0 0 1.2em;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.section__body h2 {
+  margin: 0 0 0.5em;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2.4vw, 1.62rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+/* The annotated book list: hanging mono number, then title + annotation */
+.booklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15em;
+  line-height: 1.62;
+}
+.booklist li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 0 12px;
+}
+.booklist .num {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--ink-muted);
+  padding-top: 0.42em;
+  text-align: right;
+}
+.booklist .entry { text-wrap: pretty; }
+.booklist em { font-style: italic; }      /* title */
+.booklist strong { font-weight: 700; }    /* author */
+
+/* Greatest hits — titles only, set in the display face */
+.titlelist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 1.9vw, 1.28rem);
+  line-height: 1.34;
+}
+
+/* Plain numbered lists (current reading list, suggested lists, abandoned) */
+.plainlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  line-height: 1.5;
+}
+.numlist {
+  margin: 0;
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  line-height: 1.5;
+}
+.numlist--annotated { gap: 0.8em; line-height: 1.6; }
+
+.listgroup { display: flex; flex-direction: column; gap: 2.4em; }
+
+.site-foot {
+  margin-top: clamp(64px, 8vw, 96px);
+  padding-top: 18px;
+  border-top: 2px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.site-foot a { text-decoration: none; }
+.site-foot span { color: var(--ink-muted); }
+
+@media (max-width: 960px) {
+  /* Section labels move above their body and align left */
+  .section__label {
+    text-align: left;
+    border-top: 2px solid var(--accent);
+  }
+  .section__label + .section__body {
+    margin-top: 14px;
+    padding-top: 0;
+    border-top: 0;
+  }
+  .booklist li { grid-template-columns: 28px minmax(0, 1fr); }
 }
