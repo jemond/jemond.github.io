@@ -8,6 +8,8 @@ An annotated reading list — everything read since 2017 — plus a current read
 
 Single `index.html`. No build step, no dependencies, no frameworks. Deployed via GitHub Pages on push to `master`.
 
+`robots.txt` and `sitemap.xml` sit at the repo root alongside it. `CNAME` points GitHub Pages at the custom domain.
+
 ## Deploy
 
 ```bash
